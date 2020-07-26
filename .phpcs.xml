@@ -17,6 +17,7 @@
         <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
         <exclude name="Generic.Formatting.NoSpaceAfterCast.SpaceFound" />
         <exclude name="Generic.Commenting.DocComment.MissingShort" />
+        <exclude name="Generic.NamingConventions.CamelCapsFunctionName.ScopeNotCamelCaps" />
     </rule>
 
     <rule ref="PEAR">
