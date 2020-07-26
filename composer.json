@@ -31,7 +31,6 @@
     "scripts": {
         "phpunit": "phpunit --stop-on-error --stop-on-failure --testdox",
         "phpunit-xml": "phpunit --stop-on-error --stop-on-failure --coverage-clover phpunit.coverage.xml",
-        "phpcs-desc":  "phpcs -e --standard=Squiz",
         "phpcs-check":  "phpcs --colors -s",
         "phpcs-fix":  "phpcbf --colors -s",
         "phpcs-auto-check": "@phpcs-check --standard=.phpcs.xml",

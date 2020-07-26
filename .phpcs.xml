@@ -17,6 +17,7 @@
         <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
         <exclude name="Generic.Formatting.NoSpaceAfterCast.SpaceFound" />
         <exclude name="Generic.Commenting.DocComment.MissingShort" />
+        <exclude name="Generic.NamingConventions.CamelCapsFunctionName.ScopeNotCamelCaps" />
     </rule>
 
     <rule ref="PEAR">
@@ -25,6 +26,7 @@
         <exclude name="PEAR.Commenting.FunctionComment.Missing"/>
         <exclude name="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore"/>
         <exclude name="PEAR.Commenting.FunctionComment.MissingReturn"/>
+        <exclude name="PEAR.WhiteSpace.ScopeIndent.IncorrectExact"/>
     </rule>
 
     <rule ref="PSR1"/>
@@ -49,6 +51,10 @@
         <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue" />
         <exclude name="Squiz.Objects.ObjectInstantiation.NotAssigned" />
         <exclude name="Squiz.Commenting.FunctionComment.MissingReturn" />
+        <exclude name="Squiz.ControlStructures.SwitchDeclaration.BreakIndent" />
+        <exclude name="Squiz.ControlStructures.SwitchDeclaration.SpacingBeforeBreak" />
+        <exclude name="Squiz.ControlStructures.ElseIfDeclaration.NotAllowed" />
+        <exclude name="Squiz.PHP.DisallowBooleanStatement.Found" />
     </rule>
 
     <rule ref="Zend">

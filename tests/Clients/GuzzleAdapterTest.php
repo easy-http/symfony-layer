@@ -19,7 +19,7 @@ class GuzzleAdapterTest extends TestCase
     /**
      * @test
      */
-    public function itCanSendSomeHttpRequestAndGetTheResponse()
+    public function itCanSendAHttpRequestAndGetTheResponse()
     {
         $handler = HandlerStack::create(new RatesApi());
         $client  = new Client(['handler' => $handler]);
@@ -36,7 +36,7 @@ class GuzzleAdapterTest extends TestCase
     /**
      * @test
      */
-    public function itThrowsSomeHttpClientExceptionOnServerErrors()
+    public function itThrowsTheHttpClientExceptionOnServerErrors()
     {
         $this->expectException(HttpClientException::class);
         $this->expectExceptionMessage('Error Communicating with Server');
