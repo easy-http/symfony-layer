@@ -10,9 +10,12 @@ class Response implements HttpClientResponse
 {
     protected ResponseInterface $response;
 
-    public function __construct(ResponseInterface $response)
+    private string $contents;
+
+    public function __construct(ResponseInterface $response, string $contents = '')
     {
         $this->response = $response;
+        $this->contents = $contents;
     }
 
     public function getStatusCode(): int
@@ -42,10 +45,6 @@ class Response implements HttpClientResponse
 
     private function toString(): string
     {
-        try {
-            return $this->response->getContent();
-        } catch (\Exception $e) {
-            return '';
-        }
+        return $this->contents;
     }
 }

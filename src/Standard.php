@@ -48,9 +48,18 @@ class Standard
         return $this->adapter()->request($this->request);
     }
 
-    public function setJson(array $json)
+    public function setJson(array $json): self
     {
         $this->request->setJson($json);
+
+        return $this;
+    }
+
+    public function ssl(bool $ssl): self
+    {
+        $this->request->ssl($ssl);
+
+        return $this;
     }
 
     private function adapter(): HttpClientAdapter

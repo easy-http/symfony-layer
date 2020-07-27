@@ -42,13 +42,9 @@ class Response implements HttpClientResponse
 
     private function toString(): string
     {
-        if ($this->response instanceof ResponseInterface) {
-            $stream = $this->response->getBody();
-            $stream->rewind();
+        $stream = $this->response->getBody();
+        $stream->rewind();
 
-            return $stream->getContents();
-        }
-
-        return '';
+        return $stream->getContents();
     }
 }

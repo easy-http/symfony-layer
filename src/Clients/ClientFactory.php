@@ -5,7 +5,7 @@ namespace Pleets\HttpClient\Clients;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
 use Pleets\HttpClient\Clients\Constants\Client;
-use Symfony\Component\HttpClient\HttpClient as SymfonyClient;
+use Symfony\Component\HttpClient\CurlHttpClient as SymfonyClient;
 use Symfony\Component\HttpClient\MockHttpClient;
 
 class ClientFactory
