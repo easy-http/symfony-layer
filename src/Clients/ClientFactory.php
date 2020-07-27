@@ -5,6 +5,8 @@ namespace Pleets\HttpClient\Clients;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
 use Pleets\HttpClient\Clients\Constants\Client;
+use Symfony\Component\HttpClient\HttpClient as SymfonyClient;
+use Symfony\Component\HttpClient\MockHttpClient;
 
 class ClientFactory
 {
@@ -13,6 +15,15 @@ class ClientFactory
         $instance = null;
 
         switch ($client) {
+            case Client::SYMFONY:
+                if ($handler) {
+                    $instance = new MockHttpClient($handler);
+                } else {
+                    $instance = new SymfonyClient();
+                }
+
+                break;
+
             case Client::GUZZLE:
             default:
                 if ($handler) {

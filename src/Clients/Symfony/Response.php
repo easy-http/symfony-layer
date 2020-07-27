@@ -1,10 +1,10 @@
 <?php
 
-namespace Pleets\HttpClient\Clients\Guzzle;
+namespace Pleets\HttpClient\Clients\Symfony;
 
 use Pleets\HttpClient\Contracts\HttpClientResponse;
 use Pleets\HttpClient\Exceptions\ResponseNotParsedException;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class Response implements HttpClientResponse
 {
@@ -22,7 +22,7 @@ class Response implements HttpClientResponse
 
     public function getHeaders(): array
     {
-        return $this->response->getHeaders();
+        return $this->response->getHeaders(false);
     }
 
     public function response(): array
@@ -42,13 +42,10 @@ class Response implements HttpClientResponse
 
     private function toString(): string
     {
-        if ($this->response instanceof ResponseInterface) {
-            $stream = $this->response->getBody();
-            $stream->rewind();
-
-            return $stream->getContents();
+        try {
+            return $this->response->getContent();
+        } catch (\Exception $e) {
+            return '';
         }
-
-        return '';
     }
 }
