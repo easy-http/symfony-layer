@@ -10,5 +10,6 @@ interface HttpClientRequest
     public function setMethod(string $method): self;
     public function setUri(string $uri): self;
     public function setJson(array $json): self;
+    public function ssl(bool $ssl): void;
     public function options();
 }

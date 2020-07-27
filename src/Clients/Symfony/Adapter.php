@@ -26,13 +26,11 @@ class Adapter implements HttpClientAdapter
     {
         try {
             $response = $this->client->request($request->getMethod(), $request->getUri(), $request->options());
+
+            return new Response($response, $response->getContent());
         } catch (ClientException | RedirectionException $exception) {
             $response = $exception->getResponse();
-        } catch (ServerException $exception) {
-            throw HttpClientException::fromThrowable($exception);
-        } catch (TransportException $exception) {
-            throw HttpClientException::fromThrowable($exception);
-        } catch (TransportExceptionInterface $exception) {
+        } catch (ServerException | TransportException | TransportExceptionInterface $exception) {
             throw HttpClientException::fromThrowable($exception);
         }
 

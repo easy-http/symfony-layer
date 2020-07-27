@@ -14,6 +14,8 @@ class Request implements HttpClientRequest
 
     protected int $timeout = 10;
 
+    protected bool $ssl = false;
+
     protected array $options;
 
     public function __construct(string $method, string $uri, array $options = [])
@@ -59,12 +61,18 @@ class Request implements HttpClientRequest
         return $this;
     }
 
+    public function ssl(bool $ssl): void
+    {
+        $this->ssl = $ssl;
+    }
+
     public function options()
     {
         return [
             'headers' => ['Content-Type' => 'application/json;charset=UTF-8'],
             'timeout' => $this->timeout,
             'json'    => $this->json,
+            'verify_peer' => $this->ssl,
         ];
     }
 }
