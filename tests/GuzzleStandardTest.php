@@ -12,7 +12,7 @@ use Pleets\HttpClient\Standard;
 use Tests\Mocks\RatesApi;
 use Tests\Mocks\Responses\RatesApiResponse;
 
-class StandardTest extends TestCase
+class GuzzleStandardTest extends TestCase
 {
     /**
      * @test

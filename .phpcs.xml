@@ -33,29 +33,7 @@
     <rule ref="PSR2"/>
     <rule ref="PSR12"/>
 
-    <rule ref="Squiz">
-        <exclude name="Squiz.Files.FileExtension"/>
-        <exclude name="Squiz.Commenting.ClosingDeclarationComment.Missing"/>
-        <exclude name="Squiz.Commenting.ClassComment.Missing"/>
-        <exclude name="Squiz.Commenting.FileComment.Missing"/>
-        <exclude name="Squiz.Commenting.FunctionComment.Missing"/>
-        <exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed"/>
-        <exclude name="Squiz.WhiteSpace.FunctionSpacing.AfterLast" />
-        <exclude name="Squiz.WhiteSpace.FunctionSpacing.After" />
-        <exclude name="Squiz.WhiteSpace.FunctionSpacing.BeforeFirst" />
-        <exclude name="Squiz.WhiteSpace.FunctionClosingBraceSpace.SpacingBeforeClose" />
-        <exclude name="Squiz.WhiteSpace.MemberVarSpacing.FirstIncorrect" />
-        <exclude name="Squiz.Commenting.VariableComment.Missing" />
-        <exclude name="Squiz.WhiteSpace.FunctionSpacing.Before" />
-        <exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
-        <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue" />
-        <exclude name="Squiz.Objects.ObjectInstantiation.NotAssigned" />
-        <exclude name="Squiz.Commenting.FunctionComment.MissingReturn" />
-        <exclude name="Squiz.ControlStructures.SwitchDeclaration.BreakIndent" />
-        <exclude name="Squiz.ControlStructures.SwitchDeclaration.SpacingBeforeBreak" />
-        <exclude name="Squiz.ControlStructures.ElseIfDeclaration.NotAllowed" />
-        <exclude name="Squiz.PHP.DisallowBooleanStatement.Found" />
-    </rule>
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
 
     <rule ref="Zend">
         <exclude name="Zend.NamingConventions.ValidVariableName.PrivateNoUnderscore" />
