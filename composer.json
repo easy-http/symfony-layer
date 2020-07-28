@@ -41,6 +41,10 @@
         "test": [
             "@phpcs-auto-check-project",
             "@phpunit"
+        ],
+        "code-analysis": [
+            "@phpunit-xml",
+            "sonar-scanner"
         ]
     },
     "autoload": {
