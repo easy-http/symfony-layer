@@ -21,7 +21,6 @@
     "require": {
         "php": "7.4.*",
         "ext-json": "*",
-        "pleets/php-event-dispatcher": "^1.0",
         "guzzlehttp/guzzle": "^7.0",
         "symfony/http-client": "^5.1"
     },

@@ -4,6 +4,8 @@
     <file>./src</file>
     <file>./tests</file>
 
+    <exclude-pattern>./tests/coverage/*</exclude-pattern>
+
     <rule ref="Generic">
         <exclude name="Generic.Files.LowercasedFilename.NotFound" />
         <exclude name="Generic.PHP.ClosingPHPTag.NotFound" />
