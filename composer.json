@@ -1,5 +1,5 @@
 {
-    "name": "pleets/php-http-client-integrator",
+    "name": "pleets/php-http-clients",
     "description": "Integration of several HTTP Clients in a unique interface",
     "type": "library",
     "license": "MIT",
