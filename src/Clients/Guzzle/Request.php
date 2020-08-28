@@ -3,12 +3,15 @@
 namespace Pleets\HttpClient\Clients\Guzzle;
 
 use Pleets\HttpClient\Contracts\HttpClientRequest;
+use Pleets\HttpClient\Contracts\value;
 
 class Request implements HttpClientRequest
 {
     protected string $method;
 
     protected string $uri;
+
+    protected array $headers = [];
 
     protected array $json = [];
 
@@ -35,6 +38,11 @@ class Request implements HttpClientRequest
         return $this->uri;
     }
 
+    public function getHeaders(): array
+    {
+        return $this->headers;
+    }
+
     public function getJson(): array
     {
         return $this->json;
@@ -54,6 +62,13 @@ class Request implements HttpClientRequest
         return $this;
     }
 
+    public function setHeader(string $key, string $value): self
+    {
+        $this->headers[$key] = $value;
+
+        return $this;
+    }
+
     public function setJson(array $json): self
     {
         $this->json = $json;
@@ -68,11 +83,16 @@ class Request implements HttpClientRequest
 
     public function options()
     {
-        return [
-            'headers' => ['Content-Type' => 'application/json;charset=UTF-8'],
+        $options = [
+            'headers' => array_merge(['Content-Type' => 'application/json;charset=UTF-8'], $this->headers),
             'timeout' => $this->timeout,
-            'json'    => $this->json,
             'verify' => $this->ssl,
         ];
+
+        if ($this->json) {
+            $options['json'] = $this->json;
+        }
+
+        return $options;
     }
 }
