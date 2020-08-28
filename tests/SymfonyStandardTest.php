@@ -70,7 +70,7 @@ class SymfonyStandardTest extends TestCase
             /**
              * @var \GuzzleHttp\Promise\FulfilledPromise $response
              */
-            $response = $mock(new Request($method, $url, $headers, $options['body']), $options);
+            $response = $mock(new Request($method, $url, $headers, $options['body'] ?? null), $options);
 
             /**
              * @var \GuzzleHttp\Psr7\Response $res
