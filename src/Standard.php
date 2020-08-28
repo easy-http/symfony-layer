@@ -48,6 +48,13 @@ class Standard
         return $this->adapter()->request($this->request);
     }
 
+    public function setHeader(string $key, string $value): self
+    {
+        $this->request->setHeader($key, $value);
+
+        return $this;
+    }
+
     public function setJson(array $json): self
     {
         $this->request->setJson($json);
