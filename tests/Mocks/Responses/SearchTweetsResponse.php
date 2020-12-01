@@ -11,7 +11,7 @@ class SearchTweetsResponse
                 'created_at' => 'Sun Feb 02 12:32:53 +0000 2020',
                 'id' => 1223947395387547648,
                 'id_str' => '1223947395387547648',
-                'text' => '@Femi_Sorry I’m against brexit. When a doctor gives you a diagnosis - it is opinion. It can be backed up with facts… https://t.co/U70geQwkPw',
+                'text' => '@Femi_Sorry I’m against brexit. When a doctor gives you a diagnosis - it is opinion. It can be backed up with facts… https://t.co/U70geQwkPw', // phpcs:ignore
                 'truncated' => true,
                 'entities' => [
                     'hashtags' => [],
@@ -52,7 +52,7 @@ class SearchTweetsResponse
                     'name' => 'James Mallison',
                     'screen_name' => 'J7mbo',
                     'location' => 'Bavaria, Germany',
-                    'description' => '🇬🇧Conference Speaker. Go, PHP, Swift. Owns Dockercon socks. Swears in 🇪🇸🇩🇪. Opinions are yours. Senior Manager Engineering @SixtDE. Ex: Tech Lead @trivago',
+                    'description' => '🇬🇧Conference Speaker. Go, PHP, Swift. Owns Dockercon socks. Swears in 🇪🇸🇩🇪. Opinions are yours. Senior Manager Engineering @SixtDE. Ex: Tech Lead @trivago', // phpcs:ignore
                     'url' => 'https://t.co/tzMtUFaORN',
                     'entities' => [
                         'url' => [
@@ -92,7 +92,7 @@ class SearchTweetsResponse
                     'profile_background_image_url_https' => 'https://abs.twimg.com/images/themes/theme15/bg.png',
                     'profile_background_tile' => false,
                     'profile_image_url' => 'http://pbs.twimg.com/profile_images/923304899940626432/g6n2llxZ_normal.jpg',
-                    'profile_image_url_https' => 'https://pbs.twimg.com/profile_images/923304899940626432/g6n2llxZ_normal.jpg',
+                    'profile_image_url_https' => 'https://pbs.twimg.com/profile_images/923304899940626432/g6n2llxZ_normal.jpg', // phpcs:ignore
                     'profile_banner_url' => 'https://pbs.twimg.com/profile_banners/70512422/1530129419',
                     'profile_link_color' => '000000',
                     'profile_sidebar_border_color' => '000000',
@@ -124,7 +124,7 @@ class SearchTweetsResponse
                 'created_at' => 'Sun Feb 02 12:06:02 +0000 2020',
                 'id' => 1223940638183432192,
                 'id_str' => '1223940638183432192',
-                'text' => '@sylv3on_ I found this too. What I did was leverage that flaunting of knowledge etc and took it in for myself. I fo… https://t.co/lQdSEz5lTR',
+                'text' => '@sylv3on_ I found this too. What I did was leverage that flaunting of knowledge etc and took it in for myself. I fo… https://t.co/lQdSEz5lTR', // phpcs:ignore
                 'truncated' => true,
                 'entities' => [
                     'hashtags' => [],
@@ -165,7 +165,7 @@ class SearchTweetsResponse
                     'name' => 'James Mallison',
                     'screen_name' => 'J7mbo',
                     'location' => 'Bavaria, Germany',
-                    'description' => '🇬🇧Conference Speaker. Go, PHP, Swift. Owns Dockercon socks. Swears in 🇪🇸🇩🇪. Opinions are yours. Senior Manager Engineering @SixtDE. Ex: Tech Lead @trivago',
+                    'description' => '🇬🇧Conference Speaker. Go, PHP, Swift. Owns Dockercon socks. Swears in 🇪🇸🇩🇪. Opinions are yours. Senior Manager Engineering @SixtDE. Ex: Tech Lead @trivago', // phpcs:ignore
                     'url' => 'https://t.co/tzMtUFaORN',
                     'entities' => [
                         'url' => [
@@ -205,7 +205,7 @@ class SearchTweetsResponse
                     'profile_background_image_url_https' => 'https://abs.twimg.com/images/themes/theme15/bg.png',
                     'profile_background_tile' => false,
                     'profile_image_url' => 'http://pbs.twimg.com/profile_images/923304899940626432/g6n2llxZ_normal.jpg',
-                    'profile_image_url_https' => 'https://pbs.twimg.com/profile_images/923304899940626432/g6n2llxZ_normal.jpg',
+                    'profile_image_url_https' => 'https://pbs.twimg.com/profile_images/923304899940626432/g6n2llxZ_normal.jpg', // phpcs:ignore
                     'profile_banner_url' => 'https://pbs.twimg.com/profile_banners/70512422/1530129419',
                     'profile_link_color' => '000000',
                     'profile_sidebar_border_color' => '000000',

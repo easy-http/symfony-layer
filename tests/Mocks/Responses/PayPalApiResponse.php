@@ -7,8 +7,8 @@ class PayPalApiResponse
     public static function token(): array
     {
         return [
-            'scope' => 'https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks',
-            'access_token' => 'A21AAK0bqGokMIxVEU2O-x9a04BG0xX6-geO6JmogaA0J3lCHqLKhKWvLWT2NtkP1VUOuWGBsfx3PwiHwBAhwb5UN80TmM65w',
+            'scope' => 'https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks', // phpcs:ignore
+            'access_token' => 'A21AAK0bqGokMIxVEU2O-x9a04BG0xX6-geO6JmogaA0J3lCHqLKhKWvLWT2NtkP1VUOuWGBsfx3PwiHwBAhwb5UN80TmM65w', // phpcs:ignore
             'token_type' => 'Bearer',
             'app_id' => 'APP-80W284485P519543T',
             'expires_in' => 32358,
@@ -20,7 +20,7 @@ class PayPalApiResponse
     {
         return [
             'name' => 'AUTHENTICATION_FAILURE',
-            'message' => 'Authentication failed due to invalid authentication credentials or a missing Authorization header.',
+            'message' => 'Authentication failed due to invalid authentication credentials or a missing Authorization header.', // phpcs:ignore
             'links' => [
                 [
                     'href' => 'https://developer.paypal.com/docs/api/overview/#error',

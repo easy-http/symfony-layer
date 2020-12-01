@@ -1,6 +1,11 @@
 # PHP HTTP Client integrations
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pleets_php-http-clients&metric=alert_status)](https://sonarcloud.io/dashboard?id=pleets_php-http-clients)
+<p align="center">
+<a href="https://travis-ci.org/pleets/php-http-clients"><img src="https://travis-ci.org/pleets/php-http-clients.svg?branch=master" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/pleets/php-http-clients"><img src="https://img.shields.io/scrutinizer/g/pleets/php-http-clients.svg" alt="Code Quality"></a>
+<a href="https://sonarcloud.io/dashboard?id=pleets_php-http-clients"><img src="https://sonarcloud.io/api/project_badges/measure?project=pleets_php-http-clients&metric=security_rating" alt="Bugs"></a>
+<a href="https://scrutinizer-ci.com/g/pleets/php-http-clients/?branch=master"><img src="https://scrutinizer-ci.com/g/pleets/php-http-clients/badges/coverage.png?b=master" alt="Code Coverage"></a>
+</p>
 
 Integration of several HTTP Clients in a unique interface.
 
@@ -51,5 +56,26 @@ $client->setJson([
 $response = $client->execute();
 
 $response->getStatusCode(); // 201
+$response->response();      // JSON
+```
+
+## HTTP Authentication
+
+Actually this library supports basic authentication natively.
+
+```php
+use Pleets\HttpClient\Standard;
+use Pleets\HttpClient\Clients\Constants\Client;
+
+$client = new Standard(Client::GUZZLE);
+
+$client->prepareRequest('POST', 'https://api.sandbox.paypal.com/v1/oauth2/token');
+$user = 'AeA1QIZXiflr1_-r0U2UbWTziOWX1GRQer5jkUq4ZfWT5qwb6qQRPq7jDtv57TL4POEEezGLdutcxnkJ';
+$pass = 'ECYYrrSHdKfk_Q0EdvzdGkzj58a66kKaUQ5dZAEv4HvvtDId2_DpSuYDB088BZxGuMji7G4OFUnPog6p';
+$client->setBasicAuth($user, $pass);
+$client->setQuery(['grant_type' => 'client_credentials']);
+$response = $client->execute();
+
+$response->getStatusCode(); // 200
 $response->response();      // JSON
 ```
