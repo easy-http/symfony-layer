@@ -85,32 +85,26 @@ class Standard
 
     private function adapter(): HttpClientAdapter
     {
-        if ($this->adapterShouldBeCreatedWithHandler()) {
-            $this->adapter = AdapterFactory::build($this->client);
-        } elseif ($this->adapterShouldBeCreatedWithoutHandler()) {
+        if ($this->hasAdapter()) {
+            return $this->adapter;
+        }
+
+        if ($this->hasHandler()) {
             $this->adapter = AdapterFactory::build($this->client, $this->handler);
+        } else {
+            $this->adapter = AdapterFactory::build($this->client);
         }
 
         return $this->adapter;
     }
 
-    private function adapterShouldBeCreatedWithHandler(): bool
+    private function hasHandler(): bool
     {
-        return ! $this->hasAdapter() && ! $this->hasHandler();
-    }
-
-    private function adapterShouldBeCreatedWithoutHandler(): bool
-    {
-        return ! $this->hasAdapter() && $this->hasHandler();
+        return (bool) ($this->handler ?? null);
     }
 
     private function hasAdapter(): bool
     {
         return (bool) ($this->adapter ?? null);
-    }
-
-    private function hasHandler(): bool
-    {
-        return (bool) ($this->handler ?? null);
     }
 }
