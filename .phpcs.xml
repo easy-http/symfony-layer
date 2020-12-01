@@ -6,32 +6,6 @@
 
     <exclude-pattern>./tests/coverage/*</exclude-pattern>
 
-    <rule ref="Generic">
-        <exclude name="Generic.Files.LowercasedFilename.NotFound" />
-        <exclude name="Generic.PHP.ClosingPHPTag.NotFound" />
-        <exclude name="Generic.Commenting.Todo.TaskFound" />
-        <exclude name="Generic.PHP.RequireStrictTypes.MissingDeclaration" />
-        <exclude name="Generic.Classes.OpeningBraceSameLine.BraceOnNewLine" />
-        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" />
-        <exclude name="Generic.Files.EndFileNoNewline.Found" />
-        <exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine" />
-        <exclude name="Generic.PHP.UpperCaseConstant.Found" />
-        <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
-        <exclude name="Generic.Formatting.NoSpaceAfterCast.SpaceFound" />
-        <exclude name="Generic.Commenting.DocComment.MissingShort" />
-        <exclude name="Generic.NamingConventions.CamelCapsFunctionName.ScopeNotCamelCaps" />
-    </rule>
-
-    <rule ref="PEAR">
-        <exclude name="PEAR.Commenting.ClassComment.Missing"/>
-        <exclude name="PEAR.Commenting.FileComment.Missing"/>
-        <exclude name="PEAR.Commenting.FunctionComment.Missing"/>
-        <exclude name="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore"/>
-        <exclude name="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
-        <exclude name="PEAR.Commenting.FunctionComment.MissingReturn"/>
-        <exclude name="PEAR.WhiteSpace.ScopeIndent.IncorrectExact"/>
-    </rule>
-
     <rule ref="PSR1"/>
     <rule ref="PSR2"/>
     <rule ref="PSR12"/>
