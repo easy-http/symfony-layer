@@ -30,7 +30,7 @@ class Standard
         return $this->adapter()->request($request);
     }
 
-    public function withHandler($handler)
+    public function withHandler(callable $handler)
     {
         unset($this->adapter);
         $this->handler = $handler;
