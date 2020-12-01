@@ -14,11 +14,15 @@ class Request implements HttpClientRequest
 
     protected array $json = [];
 
+    protected array $query = [];
+
     protected int $timeout = 10;
 
     protected bool $ssl = false;
 
     protected array $options;
+
+    protected array $basicAuth = [];
 
     public function __construct(string $method, string $uri, array $options = [])
     {
@@ -45,6 +49,11 @@ class Request implements HttpClientRequest
     public function getJson(): array
     {
         return $this->json;
+    }
+
+    public function getQuery(): array
+    {
+        return $this->query;
     }
 
     public function setMethod(string $method): self
@@ -75,6 +84,20 @@ class Request implements HttpClientRequest
         return $this;
     }
 
+    public function setQuery(array $query): self
+    {
+        $this->query = $query;
+
+        return $this;
+    }
+
+    public function setBasicAuth(string $username, string $password): self
+    {
+        $this->basicAuth = [$username, $password];
+
+        return $this;
+    }
+
     public function ssl(bool $ssl): void
     {
         $this->ssl = $ssl;
@@ -83,13 +106,22 @@ class Request implements HttpClientRequest
     public function options()
     {
         $options = [
-            'headers' => array_merge(['Content-Type' => 'application/json;charset=UTF-8'], $this->headers),
             'timeout' => $this->timeout,
             'verify_peer' => $this->ssl,
+            'headers' => $this->headers,
         ];
 
         if ($this->json) {
-            $options['json'] = $this->json;
+            $options['headers'] = array_merge(['Content-Type' => 'application/json;charset=UTF-8'], $this->headers);
+            $options['json']    = $this->json;
+        }
+
+        if ($this->query) {
+            $options['query'] = $this->query;
+        }
+
+        if ($this->basicAuth) {
+            $options['auth_basic'] = $this->basicAuth;
         }
 
         return $options;
