@@ -11,6 +11,8 @@ use Pleets\HttpClient\Exceptions\ResponseNotParsedException;
 use Pleets\HttpClient\Standard;
 use Tests\Mocks\RatesApi;
 use Tests\Mocks\Responses\RatesApiResponse;
+use Tests\Mocks\Responses\SearchTweetsResponse;
+use Tests\Mocks\TwitterApi;
 
 class GuzzleStandardTest extends TestCase
 {
@@ -65,5 +67,22 @@ class GuzzleStandardTest extends TestCase
         $client->withHandler($mock);
 
         $client->request('POST', 'https://api.ratesapi.io/api/2020-07-24/?base=USD')->response();
+    }
+
+    /**
+     * @test
+     */
+    public function itCanSetHeadersOnRequests()
+    {
+        $client = new Standard(Client::GUZZLE);
+        $client->withHandler(new TwitterApi());
+
+        $client->prepareRequest('GET', 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=darioriverat&count=7');
+        $token = 'tGzv3JOkF0XG5Qx2TlKWIA';
+        $client->setHeader('Authorization', 'Bearer ' . $token);
+        $response = $client->execute();
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame(SearchTweetsResponse::tweets(), $response->response());
     }
 }
