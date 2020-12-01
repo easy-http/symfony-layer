@@ -1,6 +1,11 @@
 # PHP HTTP Client integrations
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pleets_php-http-clients&metric=alert_status)](https://sonarcloud.io/dashboard?id=pleets_php-http-clients)
+<p align="center">
+<a href="https://travis-ci.org/pleets/php-http-clients"><img src="https://travis-ci.org/pleets/php-http-clients.svg?branch=master" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/pleets/php-http-clients"><img src="https://img.shields.io/scrutinizer/g/pleets/php-http-clients.svg" alt="Code Quality"></a>
+<a href="https://sonarcloud.io/dashboard?id=pleets_php-http-clients"><img src="https://sonarcloud.io/api/project_badges/measure?project=pleets_php-http-clients&metric=security_rating" alt="Bugs"></a>
+<a href="https://scrutinizer-ci.com/g/pleets/php-http-clients/?branch=master"><img src="https://scrutinizer-ci.com/g/pleets/php-http-clients/badges/coverage.png?b=master" alt="Code Coverage"></a>
+</p>
 
 Integration of several HTTP Clients in a unique interface.
 
