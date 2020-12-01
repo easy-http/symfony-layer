@@ -62,9 +62,23 @@ class Standard
         return $this;
     }
 
+    public function setQuery(array $query): self
+    {
+        $this->request->setQuery($query);
+
+        return $this;
+    }
+
     public function ssl(bool $ssl): self
     {
         $this->request->ssl($ssl);
+
+        return $this;
+    }
+
+    public function setBasicAuth(string $username, string $password): self
+    {
+        $this->request->setBasicAuth($username, $password);
 
         return $this;
     }
