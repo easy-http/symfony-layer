@@ -27,7 +27,7 @@ class PayPalApi extends BaseMock
             return $this->response(400, 'Not found');
         }
 
-        if ($request->getUri()->getPath() == '/v1/oauth2/token') {
+        if ($request->getUri()->getPath() === '/v1/oauth2/token') {
             if ($request->getMethod() === 'GET') {
                 return $this->response(401, $this->invalidToken(), [], 'OK');
             }

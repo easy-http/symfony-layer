@@ -106,7 +106,7 @@ class GuzzleAdapterTest extends TestCase
         $user    = 'AeA1QIZXiflr1_-r0U2UbWTziOWX1GRQer5jkUq4ZfWT5qwb6qQRPq7jDtv57TL4POEEezGLdutcxnkJ';
         $pass    = 'ECYYrrSHdKfk_Q0EdvzdGkzj58a66kKaUQ5dZAEv4HvvtDId2_DpSuYDB088BZxGuMji7G4OFUnPog6p';
         $request->setBasicAuth($user, $pass);
-        $request->setQuery(['grant_type' => 'client_credentials78']);
+        $request->setQuery(['grant_type' => 'client_credentials']);
         $adapter = new Adapter($client);
 
         $response = $adapter->request($request);
