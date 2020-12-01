@@ -53,3 +53,24 @@ $response = $client->execute();
 $response->getStatusCode(); // 201
 $response->response();      // JSON
 ```
+
+## HTTP Authentication
+
+Actually this library supports basic authentication natively.
+
+```php
+use Pleets\HttpClient\Standard;
+use Pleets\HttpClient\Clients\Constants\Client;
+
+$client = new Standard(Client::GUZZLE);
+
+$client->prepareRequest('POST', 'https://api.sandbox.paypal.com/v1/oauth2/token');
+$user = 'AeA1QIZXiflr1_-r0U2UbWTziOWX1GRQer5jkUq4ZfWT5qwb6qQRPq7jDtv57TL4POEEezGLdutcxnkJ';
+$pass = 'ECYYrrSHdKfk_Q0EdvzdGkzj58a66kKaUQ5dZAEv4HvvtDId2_DpSuYDB088BZxGuMji7G4OFUnPog6p';
+$client->setBasicAuth($user, $pass);
+$client->setQuery(['grant_type' => 'client_credentials']);
+$response = $client->execute();
+
+$response->getStatusCode(); // 200
+$response->response();      // JSON
+```
