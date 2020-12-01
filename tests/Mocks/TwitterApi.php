@@ -29,7 +29,7 @@ class TwitterApi extends BaseMock
                 401,
                 '',
                 [
-                    'WWW-Authenticate' => 'Bearer realm="example", error="invalid_token", error_description="The access token expired or is not valid"',
+                    'WWW-Authenticate' => 'Bearer realm="example", error="invalid_token", error_description="The access token expired or is not valid"', // phpcs:ignore
                 ]
             );
         }

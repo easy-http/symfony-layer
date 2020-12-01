@@ -83,7 +83,11 @@ class GuzzleAdapterTest extends TestCase
         $handler = HandlerStack::create(new TwitterApi());
         $client  = new Client(['handler' => $handler]);
 
-        $request = new Request('GET', 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=darioriverat&count=7', []);
+        $request = new Request(
+            'GET',
+            'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=darioriverat&count=7',
+            []
+        );
         $token   = 'tGzv3JOkF0XG5Qx2TlKWIA';
         $request->setHeader('Authorization', 'Bearer ' . $token);
         $adapter = new Adapter($client);

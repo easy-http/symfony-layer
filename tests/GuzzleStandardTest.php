@@ -79,7 +79,10 @@ class GuzzleStandardTest extends TestCase
         $client = new Standard(Client::GUZZLE);
         $client->withHandler(new TwitterApi());
 
-        $client->prepareRequest('GET', 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=darioriverat&count=7');
+        $client->prepareRequest(
+            'GET',
+            'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=darioriverat&count=7'
+        );
         $token = 'tGzv3JOkF0XG5Qx2TlKWIA';
         $client->setHeader('Authorization', 'Bearer ' . $token);
         $response = $client->execute();
