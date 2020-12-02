@@ -4,9 +4,9 @@ namespace Tests;
 
 use GuzzleHttp\Psr7\Request;
 use PHPUnit\Framework\TestCase;
-use Pleets\HttpClient\Exceptions\HttpClientException;
-use Pleets\HttpClient\Exceptions\ResponseNotParsedException;
-use Pleets\HttpClient\SymfonyClient;
+use EasyHttp\SymfonyLayer\Exceptions\HttpClientException;
+use EasyHttp\SymfonyLayer\Exceptions\ResponseNotParsedException;
+use EasyHttp\SymfonyLayer\SymfonyClient;
 use Symfony\Component\HttpClient\Exception\ServerException;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Tests\Mocks\RatesApi;

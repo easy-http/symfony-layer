@@ -1,6 +1,6 @@
 {
-    "name": "pleets/php-http-clients",
-    "description": "Integration of several HTTP Clients in a unique interface",
+    "name": "easy-http/symfony-layer",
+    "description": "Http layer for Symfony Client",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -9,8 +9,8 @@
     ],
     "homepage": "https://pleets.org",
     "support": {
-        "issues": "https://github.com/pleets/php-http-client-integrator/issues",
-        "source": "https://github.com/pleets/php-http-client-integrator"
+        "issues": "https://github.com/easy-http/symfony-layer/issues",
+        "source": "https://github.com/easy-http/symfony-layer"
     },
     "authors": [
         {
@@ -48,7 +48,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Pleets\\HttpClient\\": "src/"
+            "EasyHttp\\SymfonyLayer\\": "src/"
         }
     },
     "autoload-dev": {

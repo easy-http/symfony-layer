@@ -1,6 +1,6 @@
 <?php
 
-namespace Pleets\HttpClient\Factories;
+namespace EasyHttp\SymfonyLayer\Factories;
 
 use Symfony\Component\HttpClient\CurlHttpClient as SymfonyClient;
 use Symfony\Component\HttpClient\MockHttpClient;
