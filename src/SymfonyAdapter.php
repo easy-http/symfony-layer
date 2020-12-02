@@ -1,12 +1,12 @@
 <?php
 
-namespace Pleets\HttpClient;
+namespace EasyHttp\SymfonyLayer;
 
-use Pleets\HttpClient\SymfonyResponse;
-use Pleets\HttpClient\Contracts\HttpClientAdapter;
-use Pleets\HttpClient\Contracts\HttpClientRequest;
-use Pleets\HttpClient\Contracts\HttpClientResponse;
-use Pleets\HttpClient\Exceptions\HttpClientException;
+use EasyHttp\SymfonyLayer\SymfonyResponse;
+use EasyHttp\SymfonyLayer\Contracts\HttpClientAdapter;
+use EasyHttp\SymfonyLayer\Contracts\HttpClientRequest;
+use EasyHttp\SymfonyLayer\Contracts\HttpClientResponse;
+use EasyHttp\SymfonyLayer\Exceptions\HttpClientException;
 use Symfony\Component\HttpClient\Exception\ClientException;
 use Symfony\Component\HttpClient\Exception\RedirectionException;
 use Symfony\Component\HttpClient\Exception\ServerException;

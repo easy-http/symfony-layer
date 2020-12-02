@@ -1,8 +1,8 @@
 <?php
 
-namespace Pleets\HttpClient;
+namespace EasyHttp\SymfonyLayer;
 
-use Pleets\HttpClient\Contracts\HttpClientRequest;
+use EasyHttp\SymfonyLayer\Contracts\HttpClientRequest;
 
 class SymfonyRequest implements HttpClientRequest
 {

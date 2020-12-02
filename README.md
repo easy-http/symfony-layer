@@ -1,10 +1,10 @@
 # PHP HTTP Client integrations
 
 <p align="center">
-<a href="https://travis-ci.org/pleets/php-http-clients"><img src="https://travis-ci.org/pleets/php-http-clients.svg?branch=master" alt="Build Status"></a>
-<a href="https://scrutinizer-ci.com/g/pleets/php-http-clients"><img src="https://img.shields.io/scrutinizer/g/pleets/php-http-clients.svg" alt="Code Quality"></a>
-<a href="https://sonarcloud.io/dashboard?id=pleets_php-http-clients"><img src="https://sonarcloud.io/api/project_badges/measure?project=pleets_php-http-clients&metric=security_rating" alt="Bugs"></a>
-<a href="https://scrutinizer-ci.com/g/pleets/php-http-clients/?branch=master"><img src="https://scrutinizer-ci.com/g/pleets/php-http-clients/badges/coverage.png?b=master" alt="Code Coverage"></a>
+<a href="https://travis-ci.org/easy-http/php-http-clients"><img src="https://travis-ci.org/easy-http/php-http-clients.svg?branch=master" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/easy-http/php-http-clients"><img src="https://img.shields.io/scrutinizer/g/easy-http/php-http-clients.svg" alt="Code Quality"></a>
+<a href="https://sonarcloud.io/dashboard?id=easy-http_php-http-clients"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_php-http-clients&metric=security_rating" alt="Bugs"></a>
+<a href="https://scrutinizer-ci.com/g/easy-http/php-http-clients/?branch=master"><img src="https://scrutinizer-ci.com/g/easy-http/php-http-clients/badges/coverage.png?b=master" alt="Code Coverage"></a>
 </p>
 
 Integration of several HTTP Clients in a unique interface.
@@ -17,7 +17,7 @@ The available clients in this version are the following:
 You can download this project as follows.
 
 ```bash
-git clone git@github.com:pleets/php-http-clients.git
+git clone git@github.com:easy-http/symfony-layer.git
 ```
 
 # Usage
@@ -27,7 +27,7 @@ git clone git@github.com:pleets/php-http-clients.git
 You can execute a simple request through the Standard class. 
 
 ```php
-use Pleets\HttpClient\SymfonyClient;
+use EasyHttp\SymfonyLayer\SymfonyClient;
 
 $client = new SymfonyClient();
 $response = $client->request('GET', 'https://api.ratesapi.io/api/2020-07-24/?base=USD');
@@ -41,7 +41,7 @@ $response->response();      // JSON
 A prepared request is a more flexible way to generate requests through any client.
 
 ```php
-use Pleets\HttpClient\SymfonyClient;
+use EasyHttp\SymfonyLayer\SymfonyClient;
 
 $client = new SymfonyClient();
 
@@ -62,7 +62,7 @@ $response->response();      // JSON
 Actually this library supports basic authentication natively.
 
 ```php
-use Pleets\HttpClient\SymfonyClient;
+use EasyHttp\SymfonyLayer\SymfonyClient;
 
 $client = new SymfonyClient();
 
