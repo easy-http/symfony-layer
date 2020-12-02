@@ -1,10 +1,10 @@
 # PHP HTTP Client integrations
 
 <p align="center">
-<a href="https://travis-ci.org/easy-http/php-http-clients"><img src="https://travis-ci.org/easy-http/php-http-clients.svg?branch=master" alt="Build Status"></a>
-<a href="https://scrutinizer-ci.com/g/easy-http/php-http-clients"><img src="https://img.shields.io/scrutinizer/g/easy-http/php-http-clients.svg" alt="Code Quality"></a>
-<a href="https://sonarcloud.io/dashboard?id=easy-http_php-http-clients"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_php-http-clients&metric=security_rating" alt="Bugs"></a>
-<a href="https://scrutinizer-ci.com/g/easy-http/php-http-clients/?branch=master"><img src="https://scrutinizer-ci.com/g/easy-http/php-http-clients/badges/coverage.png?b=master" alt="Code Coverage"></a>
+<a href="https://travis-ci.org/easy-http/symfony-layer"><img src="https://travis-ci.org/easy-http/symfony-layer.svg?branch=master" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/easy-http/symfony-layer"><img src="https://img.shields.io/scrutinizer/g/easy-http/symfony-layer.svg" alt="Code Quality"></a>
+<a href="https://sonarcloud.io/dashboard?id=easy-http_symfony-layer"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_symfony-layer&metric=security_rating" alt="Bugs"></a>
+<a href="https://scrutinizer-ci.com/g/easy-http/symfony-layer/?branch=master"><img src="https://scrutinizer-ci.com/g/easy-http/symfony-layer/badges/coverage.png?b=master" alt="Code Coverage"></a>
 </p>
 
 Integration of several HTTP Clients in a unique interface.
