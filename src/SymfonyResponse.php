@@ -1,18 +1,21 @@
 <?php
 
-namespace Pleets\HttpClient\Clients\Guzzle;
+namespace Pleets\HttpClient;
 
 use Pleets\HttpClient\Contracts\HttpClientResponse;
 use Pleets\HttpClient\Exceptions\ResponseNotParsedException;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
-class Response implements HttpClientResponse
+class SymfonyResponse implements HttpClientResponse
 {
     protected ResponseInterface $response;
 
-    public function __construct(ResponseInterface $response)
+    private string $contents;
+
+    public function __construct(ResponseInterface $response, string $contents = '')
     {
         $this->response = $response;
+        $this->contents = $contents;
     }
 
     public function getStatusCode(): int
@@ -22,7 +25,7 @@ class Response implements HttpClientResponse
 
     public function getHeaders(): array
     {
-        return $this->response->getHeaders();
+        return $this->response->getHeaders(false);
     }
 
     public function response(): array
@@ -42,9 +45,6 @@ class Response implements HttpClientResponse
 
     private function toString(): string
     {
-        $stream = $this->response->getBody();
-        $stream->rewind();
-
-        return $stream->getContents();
+        return $this->contents;
     }
 }
