@@ -1,10 +1,10 @@
 <?php
 
-namespace Pleets\HttpClient\Clients\Guzzle;
+namespace Pleets\HttpClient;
 
 use Pleets\HttpClient\Contracts\HttpClientRequest;
 
-class Request implements HttpClientRequest
+class SymfonyRequest implements HttpClientRequest
 {
     protected string $method;
 
@@ -91,11 +91,6 @@ class Request implements HttpClientRequest
         return $this;
     }
 
-    public function ssl(bool $ssl): void
-    {
-        $this->ssl = $ssl;
-    }
-
     public function setBasicAuth(string $username, string $password): self
     {
         $this->basicAuth = [$username, $password];
@@ -103,11 +98,16 @@ class Request implements HttpClientRequest
         return $this;
     }
 
+    public function ssl(bool $ssl): void
+    {
+        $this->ssl = $ssl;
+    }
+
     public function options()
     {
         $options = [
             'timeout' => $this->timeout,
-            'verify' => $this->ssl,
+            'verify_peer' => $this->ssl,
             'headers' => $this->headers,
         ];
 
@@ -121,7 +121,7 @@ class Request implements HttpClientRequest
         }
 
         if ($this->basicAuth) {
-            $options['auth'] = $this->basicAuth;
+            $options['auth_basic'] = $this->basicAuth;
         }
 
         return $options;

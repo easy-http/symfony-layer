@@ -2,14 +2,12 @@
 
 namespace Pleets\HttpClient;
 
-use Pleets\HttpClient\Clients\AdapterFactory;
-use Pleets\HttpClient\Clients\Constants\Client;
-use Pleets\HttpClient\Clients\RequestFactory;
+use Pleets\HttpClient\Factories\ClientFactory;
 use Pleets\HttpClient\Contracts\HttpClientAdapter;
 use Pleets\HttpClient\Contracts\HttpClientRequest;
 use Pleets\HttpClient\Contracts\HttpClientResponse;
 
-class Standard
+class SymfonyClient
 {
     protected string $client;
 
@@ -19,14 +17,9 @@ class Standard
 
     protected $handler;
 
-    public function __construct(string $client = Client::GUZZLE)
-    {
-        $this->client = $client;
-    }
-
     public function request(string $method, string $uri): HttpClientResponse
     {
-        $request = RequestFactory::build($this->client, $method, $uri);
+        $request = new SymfonyRequest($method, $uri);
         return $this->adapter()->request($request);
     }
 
@@ -38,7 +31,7 @@ class Standard
 
     public function prepareRequest(string $method, string $uri): self
     {
-        $this->request = RequestFactory::build($this->client, $method, $uri);
+        $this->request = new SymfonyRequest($method, $uri);
 
         return $this;
     }
@@ -89,18 +82,9 @@ class Standard
             return $this->adapter;
         }
 
-        if ($this->hasHandler()) {
-            $this->adapter = AdapterFactory::build($this->client, $this->handler);
-        } else {
-            $this->adapter = AdapterFactory::build($this->client);
-        }
+        $this->adapter = new SymfonyAdapter(ClientFactory::build($this->handler));
 
         return $this->adapter;
-    }
-
-    private function hasHandler(): bool
-    {
-        return (bool) ($this->handler ?? null);
     }
 
     private function hasAdapter(): bool
