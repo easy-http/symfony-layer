@@ -1,9 +1,9 @@
 <?php
 
-namespace Pleets\HttpClient;
+namespace EasyHttp\SymfonyLayer;
 
-use Pleets\HttpClient\Contracts\HttpClientResponse;
-use Pleets\HttpClient\Exceptions\ResponseNotParsedException;
+use EasyHttp\SymfonyLayer\Contracts\HttpClientResponse;
+use EasyHttp\SymfonyLayer\Exceptions\ResponseNotParsedException;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class SymfonyResponse implements HttpClientResponse

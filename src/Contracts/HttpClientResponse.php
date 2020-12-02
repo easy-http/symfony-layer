@@ -1,6 +1,6 @@
 <?php
 
-namespace Pleets\HttpClient\Contracts;
+namespace EasyHttp\SymfonyLayer\Contracts;
 
 interface HttpClientResponse
 {

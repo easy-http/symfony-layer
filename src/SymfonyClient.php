@@ -1,11 +1,11 @@
 <?php
 
-namespace Pleets\HttpClient;
+namespace EasyHttp\SymfonyLayer;
 
-use Pleets\HttpClient\Factories\ClientFactory;
-use Pleets\HttpClient\Contracts\HttpClientAdapter;
-use Pleets\HttpClient\Contracts\HttpClientRequest;
-use Pleets\HttpClient\Contracts\HttpClientResponse;
+use EasyHttp\SymfonyLayer\Factories\ClientFactory;
+use EasyHttp\SymfonyLayer\Contracts\HttpClientAdapter;
+use EasyHttp\SymfonyLayer\Contracts\HttpClientRequest;
+use EasyHttp\SymfonyLayer\Contracts\HttpClientResponse;
 
 class SymfonyClient
 {
