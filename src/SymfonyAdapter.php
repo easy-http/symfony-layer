@@ -1,7 +1,8 @@
 <?php
 
-namespace Pleets\HttpClient\Clients\Symfony;
+namespace Pleets\HttpClient;
 
+use Pleets\HttpClient\SymfonyResponse;
 use Pleets\HttpClient\Contracts\HttpClientAdapter;
 use Pleets\HttpClient\Contracts\HttpClientRequest;
 use Pleets\HttpClient\Contracts\HttpClientResponse;
@@ -13,7 +14,7 @@ use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class Adapter implements HttpClientAdapter
+class SymfonyAdapter implements HttpClientAdapter
 {
     protected HttpClientInterface $client;
 
@@ -27,13 +28,13 @@ class Adapter implements HttpClientAdapter
         try {
             $response = $this->client->request($request->getMethod(), $request->getUri(), $request->options());
 
-            return new Response($response, $response->getContent());
+            return new SymfonyResponse($response, $response->getContent());
         } catch (ClientException | RedirectionException $exception) {
             $response = $exception->getResponse();
         } catch (ServerException | TransportException | TransportExceptionInterface $exception) {
             throw HttpClientException::fromThrowable($exception);
         }
 
-        return new Response($response);
+        return new SymfonyResponse($response);
     }
 }
