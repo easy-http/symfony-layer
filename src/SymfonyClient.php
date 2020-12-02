@@ -7,7 +7,7 @@ use Pleets\HttpClient\Contracts\HttpClientAdapter;
 use Pleets\HttpClient\Contracts\HttpClientRequest;
 use Pleets\HttpClient\Contracts\HttpClientResponse;
 
-class SymfonyStandard
+class SymfonyClient
 {
     protected string $client;
 

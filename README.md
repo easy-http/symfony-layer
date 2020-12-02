@@ -27,9 +27,9 @@ git clone git@github.com:pleets/php-http-clients.git
 You can execute a simple request through the Standard class. 
 
 ```php
-use Pleets\HttpClient\SymfonyStandard;
+use Pleets\HttpClient\SymfonyClient;
 
-$client = new SymfonyStandard();
+$client = new SymfonyClient();
 $response = $client->request('GET', 'https://api.ratesapi.io/api/2020-07-24/?base=USD');
 
 $response->getStatusCode(); // 200
@@ -41,9 +41,9 @@ $response->response();      // JSON
 A prepared request is a more flexible way to generate requests through any client.
 
 ```php
-use Pleets\HttpClient\SymfonyStandard;
+use Pleets\HttpClient\SymfonyClient;
 
-$client = new SymfonyStandard();
+$client = new SymfonyClient();
 
 $client->prepareRequest('POST', 'https://jsonplaceholder.typicode.com/posts');
 $client->setJson([
@@ -62,9 +62,9 @@ $response->response();      // JSON
 Actually this library supports basic authentication natively.
 
 ```php
-use Pleets\HttpClient\SymfonyStandard;
+use Pleets\HttpClient\SymfonyClient;
 
-$client = new SymfonyStandard();
+$client = new SymfonyClient();
 
 $client->prepareRequest('POST', 'https://api.sandbox.paypal.com/v1/oauth2/token');
 $user = 'AeA1QIZXiflr1_-r0U2UbWTziOWX1GRQer5jkUq4ZfWT5qwb6qQRPq7jDtv57TL4POEEezGLdutcxnkJ';

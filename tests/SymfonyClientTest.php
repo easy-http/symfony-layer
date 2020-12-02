@@ -6,7 +6,7 @@ use GuzzleHttp\Psr7\Request;
 use PHPUnit\Framework\TestCase;
 use Pleets\HttpClient\Exceptions\HttpClientException;
 use Pleets\HttpClient\Exceptions\ResponseNotParsedException;
-use Pleets\HttpClient\SymfonyStandard;
+use Pleets\HttpClient\SymfonyClient;
 use Symfony\Component\HttpClient\Exception\ServerException;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Tests\Mocks\RatesApi;
@@ -19,7 +19,7 @@ class SymfonyClientTest extends TestCase
      */
     public function itCanSendAHttpRequestAndGetTheResponse()
     {
-        $client = new SymfonyStandard();
+        $client = new SymfonyClient();
         $client->withHandler($this->createHandler($mock = new RatesApi()));
 
         $response = $client->request('POST', 'https://api.ratesapi.io/api/2020-07-24/?base=USD');
@@ -35,7 +35,7 @@ class SymfonyClientTest extends TestCase
     {
         $this->expectException(HttpClientException::class);
 
-        $client = new SymfonyStandard();
+        $client = new SymfonyClient();
         $client->withHandler($this->createErrorHandler());
 
         $client->request('POST', 'https://api.ratesapi.io/api/2020-07-24/?base=USD');
@@ -51,7 +51,7 @@ class SymfonyClientTest extends TestCase
         $mock = new RatesApi();
         $mock->withResponse(200, 'some string');
 
-        $client = new SymfonyStandard();
+        $client = new SymfonyClient();
         $client->withHandler($this->createHandler($mock));
 
         $client->request('POST', 'https://api.ratesapi.io/api/2020-07-24/?base=USD')->response();
