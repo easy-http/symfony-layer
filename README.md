@@ -1,4 +1,4 @@
-# PHP HTTP Client integrations
+<p align="center"><img src="https://blog.pleets.org/img/articles/easy-http-logo.png" height="150"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/easy-http/symfony-layer"><img src="https://travis-ci.org/easy-http/symfony-layer.svg?branch=master" alt="Build Status"></a>
@@ -7,17 +7,20 @@
 <a href="https://scrutinizer-ci.com/g/easy-http/symfony-layer/?branch=master"><img src="https://scrutinizer-ci.com/g/easy-http/symfony-layer/badges/coverage.png?b=master" alt="Code Coverage"></a>
 </p>
 
-Integration of several HTTP Clients in a unique interface.
+# Symfony Layer
 
-The available clients in this version are the following:
+This is an HTTP layer for Symfony Client. For more layers see [Easy Http](https://github.com/easy-http).
 
-- Guzzle v7.0
+This library supports the following versions of Symfony Http Client.
+
 - Symfony v5.1
 
-You can download this project as follows.
+# Installation
+
+Use following command to install this library:
 
 ```bash
-git clone git@github.com:easy-http/symfony-layer.git
+composer require easy-http/symfony-layer
 ```
 
 # Usage
