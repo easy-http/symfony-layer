@@ -16,7 +16,7 @@ This is an HTTP layer for Symfony Client. For more layers see [Easy Http](https:
 
 This library supports the following versions of Symfony Http Client.
 
-- Symfony Http Client v5.1
+- Symfony Http Client v5.0 or later
 
 # Installation
 

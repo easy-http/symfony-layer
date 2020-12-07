@@ -21,7 +21,7 @@
     "require": {
         "php": "7.4.*",
         "ext-json": "*",
-        "symfony/http-client": "^5.1",
+        "symfony/http-client": "^5.0",
         "easy-http/layer-contracts": "^0.1.0"
     },
     "require-dev": {
