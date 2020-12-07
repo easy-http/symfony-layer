@@ -37,15 +37,7 @@
         "phpcs-auto-check": "@phpcs-check --standard=.phpcs.xml",
         "phpcs-auto-fix": "@phpcs-fix --standard=.phpcs.xml",
         "phpcs-auto-check-project": "phpcs --report=summary -p",
-        "phpcs-auto-fix-project": "phpcbf --report=summary -p",
-        "test": [
-            "@phpcs-auto-check-project",
-            "@phpunit"
-        ],
-        "code-analysis": [
-            "@phpunit-xml",
-            "sonar-scanner"
-        ]
+        "phpcs-auto-fix-project": "phpcbf --report=summary -p"
     },
     "autoload": {
         "psr-4": {
