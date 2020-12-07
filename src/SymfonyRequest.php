@@ -2,7 +2,7 @@
 
 namespace EasyHttp\SymfonyLayer;
 
-use EasyHttp\SymfonyLayer\Contracts\HttpClientRequest;
+use EasyHttp\LayerContracts\Contracts\HttpClientRequest;
 
 class SymfonyRequest implements HttpClientRequest
 {
@@ -39,6 +39,11 @@ class SymfonyRequest implements HttpClientRequest
     public function getUri(): string
     {
         return $this->uri;
+    }
+
+    public function getHeader(string $key)
+    {
+        return $this->headers[$key] ?? null;
     }
 
     public function getHeaders(): array
@@ -103,7 +108,7 @@ class SymfonyRequest implements HttpClientRequest
         $this->ssl = $ssl;
     }
 
-    public function options()
+    public function options(): array
     {
         $options = [
             'timeout' => $this->timeout,

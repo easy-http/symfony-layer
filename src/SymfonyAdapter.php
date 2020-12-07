@@ -2,11 +2,10 @@
 
 namespace EasyHttp\SymfonyLayer;
 
-use EasyHttp\SymfonyLayer\SymfonyResponse;
-use EasyHttp\SymfonyLayer\Contracts\HttpClientAdapter;
-use EasyHttp\SymfonyLayer\Contracts\HttpClientRequest;
-use EasyHttp\SymfonyLayer\Contracts\HttpClientResponse;
-use EasyHttp\SymfonyLayer\Exceptions\HttpClientException;
+use EasyHttp\LayerContracts\Contracts\HttpClientAdapter;
+use EasyHttp\LayerContracts\Contracts\HttpClientRequest;
+use EasyHttp\LayerContracts\Contracts\HttpClientResponse;
+use EasyHttp\LayerContracts\Exceptions\HttpClientException;
 use Symfony\Component\HttpClient\Exception\ClientException;
 use Symfony\Component\HttpClient\Exception\RedirectionException;
 use Symfony\Component\HttpClient\Exception\ServerException;
