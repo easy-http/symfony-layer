@@ -2,30 +2,36 @@
 
 namespace Tests;
 
-use GuzzleHttp\Psr7\Request;
+use EasyHttp\LayerContracts\Exceptions\HttpClientException;
+use EasyHttp\LayerContracts\Exceptions\ImpossibleToParseJsonException;
 use PHPUnit\Framework\TestCase;
-use EasyHttp\SymfonyLayer\Exceptions\HttpClientException;
-use EasyHttp\SymfonyLayer\Exceptions\ResponseNotParsedException;
 use EasyHttp\SymfonyLayer\SymfonyClient;
-use Symfony\Component\HttpClient\Exception\ServerException;
-use Symfony\Component\HttpClient\Response\MockResponse;
+use Tests\Concerns\HasHandler;
+use Tests\Mocks\PayPalApi;
 use Tests\Mocks\RatesApi;
+use Tests\Mocks\Responses\PayPalApiResponse;
 use Tests\Mocks\Responses\RatesApiResponse;
+use Tests\Mocks\Responses\SearchTweetsResponse;
+use Tests\Mocks\TwitterApi;
 
 class SymfonyClientTest extends TestCase
 {
+    use HasHandler;
+
+    protected $uri = 'https://api.ratesapi.io/api/2020-07-24/?base=USD';
+
     /**
      * @test
      */
     public function itCanSendAHttpRequestAndGetTheResponse()
     {
         $client = new SymfonyClient();
-        $client->withHandler($this->createHandler($mock = new RatesApi()));
+        $client->withHandler($this->createHandler(new RatesApi()));
 
-        $response = $client->request('POST', 'https://api.ratesapi.io/api/2020-07-24/?base=USD');
+        $response = $client->call('POST', $this->uri);
 
         $this->assertSame(200, $response->getStatusCode());
-        $this->assertSame(RatesApiResponse::usd(), $response->response());
+        $this->assertSame(RatesApiResponse::usd(), $response->parseJson());
     }
 
     /**
@@ -38,7 +44,7 @@ class SymfonyClientTest extends TestCase
         $client = new SymfonyClient();
         $client->withHandler($this->createErrorHandler());
 
-        $client->request('POST', 'https://api.ratesapi.io/api/2020-07-24/?base=USD');
+        $client->call('POST', $this->uri);
     }
 
     /**
@@ -46,7 +52,7 @@ class SymfonyClientTest extends TestCase
      */
     public function itThrowsTheNotParsedExceptionOnInvalidJsonString()
     {
-        $this->expectException(ResponseNotParsedException::class);
+        $this->expectException(ImpossibleToParseJsonException::class);
 
         $mock = new RatesApi();
         $mock->withResponse(200, 'some string');
@@ -54,50 +60,45 @@ class SymfonyClientTest extends TestCase
         $client = new SymfonyClient();
         $client->withHandler($this->createHandler($mock));
 
-        $client->request('POST', 'https://api.ratesapi.io/api/2020-07-24/?base=USD')->response();
+        $client->call('POST', $this->uri)->parseJson();
     }
 
-    private function createHandler($mock): callable
+    /**
+     * @test
+     */
+    public function itCanSetHeadersOnRequests()
     {
-        return function ($method, $url, $options) use ($mock) {
-            $headers = [];
-            foreach ($options['headers'] as $header) {
-                preg_match('#([a-zA-Z]+-?[a-zA-Z]+):\s+(.*)#', $header, $matches);
-                $headers[$matches[1]] = $matches[2];
-            }
+        $client = new SymfonyClient();
+        $client->withHandler($this->createHandler(new TwitterApi()));
 
-            /**
-             * @var \GuzzleHttp\Promise\FulfilledPromise $response
-             */
-            $response = $mock(new Request($method, $url, $headers, $options['body'] ?? null), $options);
+        $client->prepareRequest(
+            'GET',
+            'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=darioriverat&count=7'
+        );
+        $token = 'tGzv3JOkF0XG5Qx2TlKWIA';
+        $client->getRequest()->setHeader('Authorization', 'Bearer ' . $token);
+        $response = $client->execute();
 
-            /**
-             * @var \GuzzleHttp\Psr7\Response $res
-             */
-            $response = $response->wait();
-
-            return new MockResponse(
-                $response->getBody()->getContents(),
-                [
-                    'url'              => $url,
-                    'http_code'        => $response->getStatusCode(),
-                    'response_headers' => $response->getHeaders(),
-                ]
-            );
-        };
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame(SearchTweetsResponse::tweets(), $response->parseJson());
     }
 
-    private function createErrorHandler(): callable
+    /**
+     * @test
+     */
+    public function itCanHandleBasicAuthentication()
     {
-        return function () {
-            $response = new MockResponse(
-                'Error Communicating with Server',
-                [
-                    'http_code' => 500,
-                    'url'       => 'test',
-                ]
-            );
-            throw new ServerException($response);
-        };
+        $client = new SymfonyClient();
+        $client->withHandler($this->createHandler(new PayPalApi()));
+
+        $client->prepareRequest('POST', 'https://api.sandbox.paypal.com/v1/oauth2/token');
+        $user = 'AeA1QIZXiflr1_-r0U2UbWTziOWX1GRQer5jkUq4ZfWT5qwb6qQRPq7jDtv57TL4POEEezGLdutcxnkJ';
+        $pass = 'ECYYrrSHdKfk_Q0EdvzdGkzj58a66kKaUQ5dZAEv4HvvtDId2_DpSuYDB088BZxGuMji7G4OFUnPog6p';
+        $client->getRequest()->setBasicAuth($user, $pass);
+        $client->getRequest()->setQuery(['grant_type' => 'client_credentials']);
+        $response = $client->execute();
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame(PayPalApiResponse::token(), $response->parseJson());
     }
 }

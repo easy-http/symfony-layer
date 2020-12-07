@@ -10,6 +10,6 @@ trait HasFixedResponse
 
     public function withResponse(int $code, string $body): void
     {
-        $this->response = $this->response($code, $body);
+        $this->response = $this->jsonResponse($code, $body);
     }
 }

@@ -2,93 +2,20 @@
 
 namespace EasyHttp\SymfonyLayer;
 
+use EasyHttp\LayerContracts\AbstractClient;
+use EasyHttp\LayerContracts\Contracts\HttpClientAdapter;
+use EasyHttp\LayerContracts\Contracts\HttpClientRequest;
 use EasyHttp\SymfonyLayer\Factories\ClientFactory;
-use EasyHttp\SymfonyLayer\Contracts\HttpClientAdapter;
-use EasyHttp\SymfonyLayer\Contracts\HttpClientRequest;
-use EasyHttp\SymfonyLayer\Contracts\HttpClientResponse;
 
-class SymfonyClient
+class SymfonyClient extends AbstractClient
 {
-    protected string $client;
-
-    protected HttpClientAdapter $adapter;
-
-    protected HttpClientRequest $request;
-
-    protected $handler;
-
-    public function request(string $method, string $uri): HttpClientResponse
+    protected function buildRequest(string $method, string $uri): HttpClientRequest
     {
-        $request = new SymfonyRequest($method, $uri);
-        return $this->adapter()->request($request);
+        return new SymfonyRequest($method, $uri);
     }
 
-    public function withHandler(callable $handler)
+    protected function buildAdapter(): HttpClientAdapter
     {
-        unset($this->adapter);
-        $this->handler = $handler;
-    }
-
-    public function prepareRequest(string $method, string $uri): self
-    {
-        $this->request = new SymfonyRequest($method, $uri);
-
-        return $this;
-    }
-
-    public function execute(): HttpClientResponse
-    {
-        return $this->adapter()->request($this->request);
-    }
-
-    public function setHeader(string $key, string $value): self
-    {
-        $this->request->setHeader($key, $value);
-
-        return $this;
-    }
-
-    public function setJson(array $json): self
-    {
-        $this->request->setJson($json);
-
-        return $this;
-    }
-
-    public function setQuery(array $query): self
-    {
-        $this->request->setQuery($query);
-
-        return $this;
-    }
-
-    public function ssl(bool $ssl): self
-    {
-        $this->request->ssl($ssl);
-
-        return $this;
-    }
-
-    public function setBasicAuth(string $username, string $password): self
-    {
-        $this->request->setBasicAuth($username, $password);
-
-        return $this;
-    }
-
-    private function adapter(): HttpClientAdapter
-    {
-        if ($this->hasAdapter()) {
-            return $this->adapter;
-        }
-
-        $this->adapter = new SymfonyAdapter(ClientFactory::build($this->handler));
-
-        return $this->adapter;
-    }
-
-    private function hasAdapter(): bool
-    {
-        return (bool) ($this->adapter ?? null);
+        return new SymfonyAdapter(ClientFactory::build($this->handler));
     }
 }
