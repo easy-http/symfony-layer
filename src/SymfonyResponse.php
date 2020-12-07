@@ -2,12 +2,15 @@
 
 namespace EasyHttp\SymfonyLayer;
 
-use EasyHttp\SymfonyLayer\Contracts\HttpClientResponse;
-use EasyHttp\SymfonyLayer\Exceptions\ResponseNotParsedException;
+use EasyHttp\LayerContracts\Contracts\HttpClientResponse;
+use EasyHttp\LayerContracts\Exceptions\ImpossibleToParseJsonException;
+use EasyHttp\SymfonyLayer\Concerns\NeedsParseHeaders;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class SymfonyResponse implements HttpClientResponse
 {
+    use NeedsParseHeaders;
+
     protected ResponseInterface $response;
 
     private string $contents;
@@ -25,16 +28,21 @@ class SymfonyResponse implements HttpClientResponse
 
     public function getHeaders(): array
     {
-        return $this->response->getHeaders(false);
+        return $this->parseHeaders($this->response->getHeaders(false));
     }
 
-    public function response(): array
+    public function getBody(): string
+    {
+        return $this->toString();
+    }
+
+    public function parseJson(): array
     {
         $response = $this->toString();
         $data     = json_decode($response, true);
 
         if (! $data) {
-            throw new ResponseNotParsedException(
+            throw new ImpossibleToParseJsonException(
                 'Service response could not be parsed to JSON, Response: ' .
                 $response . ', Reason: ' . json_last_error()
             );

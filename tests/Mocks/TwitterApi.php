@@ -12,33 +12,29 @@ class TwitterApi extends BaseMock
     use HasFixedResponse;
     use HasBearerAuthentication;
 
-    protected $hostname = 'api.twitter.com';
+    protected string $hostname = 'api.twitter.com';
 
     public function __invoke(RequestInterface $request)
     {
+        $response = $this->jsonResponse(400, 'Not found');
+
         if ($this->response) {
-            return $this->response;
-        }
-
-        if ($request->getUri()->getHost() != $this->hostname) {
-            return $this->response(400, 'Not found');
-        }
-
-        if (! $this->isAuthTokenCorrect($request)) {
-            return $this->response(
+            $response = $this->response;
+        } elseif ($request->getUri()->getHost() != $this->hostname) {
+            $response = $this->jsonResponse(400, 'Not found');
+        } elseif (! $this->isAuthTokenCorrect($request)) {
+            $response = $this->jsonResponse(
                 401,
                 '',
                 [
                     'WWW-Authenticate' => 'Bearer realm="example", error="invalid_token", error_description="The access token expired or is not valid"', // phpcs:ignore
                 ]
             );
+        } elseif ($request->getUri()->getPath() === '/1.1/statuses/user_timeline.json') {
+            $response = $this->jsonResponse(200, $this->tweets(), [], 'OK');
         }
 
-        if ($request->getUri()->getPath() === '/1.1/statuses/user_timeline.json') {
-            return $this->response(200, $this->tweets(), [], 'OK');
-        }
-
-        return $this->response(400, 'Not found');
+        return $response;
     }
 
     private function tweets(): array
