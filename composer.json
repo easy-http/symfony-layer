@@ -19,10 +19,10 @@
         }
     ],
     "require": {
-        "php": "7.4.*",
+        "php": "^7.4|^8.0",
         "ext-json": "*",
-        "symfony/http-client": "^5.0",
-        "easy-http/layer-contracts": "^0.1.0"
+        "symfony/http-client": "^5.1",
+        "easy-http/layer-contracts": "^0.2"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.0",
