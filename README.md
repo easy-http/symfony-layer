@@ -1,24 +1,51 @@
+# ⚠️ ARCHIVED REPOSITORY ⚠️
+
+This repository has been archived and is no longer maintained. Please use the new repository:
+
+## [easy-http/symfony-adapter](https://github.com/easy-http/symfony-adapter)
+
+The package has been renamed from `symfony-layer` to `symfony-adapter` for improved clarity. The new package is available at:
+
+```bash
+composer require easy-http/symfony-adapter
+```
+
+All functionality remains the same in v2.0.0 of the new package, only the package name and namespace have changed:
+- Old namespace: `EasyHttp\SymfonyLayer`
+- New namespace: `EasyHttp\SymfonyAdapter`
+
 <p align="center"><img src="https://blog.pleets.org/img/articles/easy-http-logo-320.png"></p>
 
 <p align="center">
-<a href="https://github.com/easy-http/symfony-layer/actions/workflows/tests.yml"><img src="https://github.com/easy-http/symfony-layer/actions/workflows/tests.yml/badge.svg?branch=1.x" alt="Build Status"></a>
-<a href="https://scrutinizer-ci.com/g/easy-http/symfony-layer"><img src="https://img.shields.io/scrutinizer/g/easy-http/symfony-layer.svg" alt="Code Quality"></a>
-<a href="https://scrutinizer-ci.com/g/easy-http/symfony-layer/?branch=master"><img src="https://scrutinizer-ci.com/g/easy-http/symfony-layer/badges/coverage.png?b=master" alt="Code Coverage"></a>
+<img src="https://img.shields.io/badge/status-archived-red" alt="Archived">
+<img src="https://img.shields.io/badge/package-deprecated-red" alt="Deprecated">
 </p>
 
-# Symfony Layer
+<p align="center">
+    :bookmark: Consistent interface for http clients
+</p>
 
-This is an HTTP layer for Symfony Client. For more layers see [Easy Http](https://github.com/easy-http).
+<p align="center">
+    :rocket: Change easily from one client to another using http layer contracts
+</p>
 
-<a href="https://sonarcloud.io/component_measures?metric=security_rating&branch=1.x&id=easy-http_symfony-layer"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_symfony-layer&metric=security_rating&branch=1.x" alt="Bugs"></a>
-<a href="https://sonarcloud.io/component_measures?metric=bugs&branch=1.x&id=easy-http_symfony-layer"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_symfony-layer&metric=bugs&branch=1.x" alt="Bugs"></a>
-<a href="https://sonarcloud.io/component_measures?metric=code_smells&branch=1.x&id=easy-http_symfony-layer"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_symfony-layer&metric=code_smells&branch=1.x" alt="Bugs"></a>
+# Guzzle Layer (Archived)
 
-This library supports the following versions of Symfony Http Client.
+> ⚠️ **DEPRECATED**: This package has been renamed to [easy-http/symfony-adapter](https://github.com/easy-http/symfony-adapter). Please use the new package instead.
 
-- Symfony Http Client v5.0 or later
+This is an HTTP layer for Guzzle Client based on [HTTP layer contracts](https://github.com/easy-http/layer-contracts).
+These contracts standardize the way you consume HTTP clients like Guzzle, Symfony, and others with a consistent interface. No matter what client you are using,
+the methods you have to execute to do the job are the same for all!!.
+
+:books: Check out the [Documentation](https://easy-http.com/docs) to learn how to use any layer that implements these contracts.
+
+This library supports the following versions of Guzzle Http Client.
+
+<a href="#tada-php-support" title="Symfony Version Supported"><img alt="Symfony Versions Supported" src="https://img.shields.io/badge/symfony-5.0-blue"></a>
 
 # Installation
+
+> ⚠️ **DEPRECATED**: This package is no longer maintained. Please use [easy-http/symfony-adapter](https://github.com/easy-http/symfony-adapter) instead.
 
 Use following command to install this library:
 
@@ -28,73 +55,5 @@ composer require easy-http/symfony-layer
 
 # Usage
 
-## Simple requests
-
-You can execute a simple request as follows.
-
-```php
-use EasyHttp\SymfonyLayer\SymfonyClient;
-
-$client = new SymfonyClient();
-$response = $client->call('GET', 'https://api.ratesapi.io/api/2020-07-24/?base=USD');
-
-$response->getStatusCode(); // 200
-$response->parseJson();     // array
-```
-
-## Prepared requests
-
-A prepared request is a more flexible way to generate a request. You can use the `setQuery` method
-to specify request query.
-
-```php
-use EasyHttp\SymfonyLayer\SymfonyClient;
-
-$client = new SymfonyClient();
-
-$client->prepareRequest('POST', 'https://api.ratesapi.io/api/2020-07-24/');
-$client->getRequest()->setQuery(['base' => 'USD']);
-$response = $client->execute();
-
-$response->getStatusCode(); // 200
-$response->parseJson();     // array
-```
-
-Also, you can use the `setJson` method to set a json string as the body.
-
-```php
-use EasyHttp\SymfonyLayer\SymfonyClient;
-
-$client = new SymfonyClient();
-
-$client->prepareRequest('POST', 'https://jsonplaceholder.typicode.com/posts');
-$client->getRequest()->setJson([
-    'title' => 'foo',
-    'body' => 'bar',
-    'userId' => 1,
-]);
-$response = $client->execute();
-
-$response->getStatusCode(); // 201
-$response->parseJson();     // array
-```
-
-## HTTP Authentication
-
-Actually this library supports basic authentication natively.
-
-```php
-use EasyHttp\SymfonyLayer\SymfonyClient;
-
-$client = new SymfonyClient();
-
-$client->prepareRequest('POST', 'https://api.sandbox.paypal.com/v1/oauth2/token');
-$user = 'AeA1QIZXiflr1_-r0U2UbWTziOWX1GRQer5jkUq4ZfWT5qwb6qQRPq7jDtv57TL4POEEezGLdutcxnkJ';
-$pass = 'ECYYrrSHdKfk_Q0EdvzdGkzj58a66kKaUQ5dZAEv4HvvtDId2_DpSuYDB088BZxGuMji7G4OFUnPog6p';
-$client->getRequest()->setBasicAuth($user, $pass);
-$client->getRequest()->setQuery(['grant_type' => 'client_credentials']);
-$response = $client->execute();
-
-$response->getStatusCode(); // 200
-$response->parseJson();     // array
-```
+This layer as well as any other uses the [HTTP Layer Contracts](https://github.com/easy-http/layer-contracts).
+You can check all behavior for the current version at [Easy Http Documentation](https://easy-http.com/docs).
